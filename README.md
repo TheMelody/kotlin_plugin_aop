@@ -13,7 +13,7 @@
        //等等更多其他仓库地址,maven里面的这个地址是必须要的
  }
   dependencies {
-    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.10"
     classpath 'com.hujiang.aspectjx:gradle-android-plugin-aspectjx:2.0.4'
  }
 ```
