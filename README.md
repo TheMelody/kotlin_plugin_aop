@@ -97,13 +97,39 @@ annotation class OnRequestPermissionsResult(val useDefaultDeniedDialog:Boolean =
 <string name="dialog_aop_permission_message">当前应用缺少必要权限。\n\n请点击\"设置\"-\"权限\"-打开如下权限:</string>
 <string name="dialog_aop_permission_message_no_details">当前应用缺少必要权限。\n\n请点击\"设置\"-\"权限\"-打开所需的权限。</string>
 ```
+如果你配置成了true那么你只需在回调上方增加@OnRequestPermissionsResult(useDefaultDeniedDialog = true)就结束了
+如果你使用默认的false，那么你需要自己处理权限拒绝之后的处理逻辑，如下方法demo：
+```
+@OnRequestPermissionsResult
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if(requestCode==1001){//这个和你的请求的code需要匹配
+            permissions.classCast<Array<String>>()?.let {
+                PermissionUtils.getLackedPermissionList(this, it).let { lackedList ->
+                   //不可描述......
+                }
+            }
+        }
+    }
+```
 
+#### <span id="#4">4.悬浮窗权限申请</span>
+```
+@CheckDrawOverLaysPermission
+fun checkFloatWindow(){
+   //悬浮窗权限有了,可以做下面的事情了
+}
+```
+如果自己要控制悬浮窗检查可以使用下面两个方法：
+```
+检测是否授权悬浮窗权限了,true授权了,false没有授权
+aop.kotlin.plugin.PermissionUtils#canDrawOverlays
 
+跳转到悬浮窗授权界面
+aop.kotlin.plugin.PermissionUtils#openDrawOverlaysActivity
+```
 
- 
-
-
-
+## :clap: 用法全部介绍完，有新的想法可以提出来
 
 
 
