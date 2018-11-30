@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <item name="dialog_aop_permission_title" type="string"/>
+  <item name="dialog_aop_permission_message" type="string"/>
+  <item name="dialog_aop_permission_message_no_details" type="string"/>
+</resources>
