@@ -54,9 +54,53 @@ implementation 'aop.kotlinx.plugin:kotlin_plugin_aop:1.0.0'
 * [3.运行时权限申请](#3)
 * [4.悬浮窗权限申请](#4)
 
-<span id="#1">1.防止重复点击</span>
+
+#### <span id="#1">1.防止重复点击</span>
+
+```
+@SingleClick
+fun testSingleClick(){
+   Log.d(TAG,"testSingleClick()")
+}
+```
+
+#### <span id="#2">2.开发模式下,打印方法耗时</span>
+```
+@DebugTimeTrace(value = "登录")
+fun doLogin(){
+   //不可描述的耗时
+}
+```
+
+#### <span id="#3">3.运行时权限申请</span>
+```
+@CheckPermission(requestCode = 1001, permissions = [Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA])
+fun chooseAlbum(){
+        //权限申请写和相机权限,样例
+}
+```
+##### 我们需要在Activity或者Fragment中复写
+```
+override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray)
+```
+我们需要在这个回调方法上面增加授权结果的注解 @OnRequestPermissionsResult
+这个注解类默认的参数是false 
+```
+annotation class OnRequestPermissionsResult(val useDefaultDeniedDialog:Boolean = false)
+```
+如果我们配置成了true，则使用我们写好的默认权限拒绝的提示dialog，
+##### 如果我们配置成了true，那么我们需要在res目录下的values.xml中
+增加如下内容:
+##### (如果你用默认的false，则不需要配置这三个string值)
+```
+<string name="dialog_aop_permission_title">提示</string>
+<string name="dialog_aop_permission_message">当前应用缺少必要权限。\n\n请点击\"设置\"-\"权限\"-打开如下权限:</string>
+<string name="dialog_aop_permission_message_no_details">当前应用缺少必要权限。\n\n请点击\"设置\"-\"权限\"-打开所需的权限。</string>
+```
 
 
+
+ 
 
 
 
