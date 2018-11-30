@@ -3,7 +3,7 @@
 
 我们先介绍如何集成进我们的项目中，然后再介绍如何使用
 ------
-如果我的Libary的kotlin版本库过低，你们可以使用gradle的命令进行修改版本
+如果我的插件库的kotlin版本库过低，你们可以使用gradle代码进行修改版本
 ```
 configurations.all {
         resolutionStrategy.eachDependency { DependencyResolveDetails details ->
