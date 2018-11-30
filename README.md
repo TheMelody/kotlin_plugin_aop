@@ -49,14 +49,13 @@ implementation 'aop.kotlinx.plugin:kotlin_plugin_aop:1.0.0'
 ## :see_no_evil:前方高能，接下来我们就可以使用我们的aop插件了
 目前我们提供四个功能：
 ****
-* [横线](#横线)
 * [1.防止控件重复点击](#1.防止控件重复点击)
 * [2.开发模式下,打印方法耗时](#2.开发模式下,打印方法耗时)
 * [3.运行时权限申请](#3.运行时权限申请)
 * [4.悬浮窗权限申请](#4.悬浮窗权限申请)
 
 
-1.防止重复点击
+### 1.防止重复点击
 ------
 ```
 @SingleClick
@@ -64,10 +63,7 @@ fun testSingleClick(){
    Log.d(TAG,"testSingleClick()")
 }
 ```
-### 横线
------------
-
-2.开发模式下,打印方法耗时
+### 2.开发模式下,打印方法耗时
 ------
 ```
 @DebugTimeTrace(value = "登录")
@@ -76,7 +72,7 @@ fun doLogin(){
 }
 ```
 
-3.运行时权限申请
+### 3.运行时权限申请
 ------
 ```
 @CheckPermission(requestCode = 1001, permissions = [Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA])
@@ -118,7 +114,7 @@ annotation class OnRequestPermissionsResult(val useDefaultDeniedDialog:Boolean =
     }
 ```
 
-4.悬浮窗权限申请
+### 4.悬浮窗权限申请
 ------
 ```
 @CheckDrawOverLaysPermission
