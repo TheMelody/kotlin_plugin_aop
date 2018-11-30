@@ -49,30 +49,12 @@ implementation 'aop.kotlinx.plugin:kotlin_plugin_aop:1.0.0'
 ## :see_no_evil:前方高能，接下来我们就可以使用我们的aop插件了
 目前我们提供四个功能：
 
-- <a href=”#one”>1.防止控件重复点击</a>
-- <a href=”#two”>2.开发模式下,打印方法耗时</a>
-- <a href=”#three”>3.运行时权限申请</a>
-- <a href=”#four”>4.悬浮窗权限申请</a>
+* [1.防止控件重复点击](#1)
+* [2.开发模式下,打印方法耗时](#2)
+* [3.运行时权限申请](#3)
+* [4.悬浮窗权限申请](#4)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<span class="#one">1.防止重复点击</span>
+<span id="#1">1.防止重复点击</span>
 
 
 
