@@ -3,6 +3,25 @@
 
 我们先介绍如何集成进我们的项目中，然后再介绍如何使用
 ------
+如果我的Libary的kotlin版本库过低，你们可以使用gradle的命令进行修改版本
+```
+configurations.all {
+        resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+            def requested = details.requested
+            if(requested.group == "org.jetbrains.kotlin"){
+                if (!requested.name.startsWith("org.jetbrains.kotlinx:kotlinx-coroutines-android")) {
+                    details.useVersion "xxx.xxx.xxx最新版本号"
+                }
+                //org.jetbrains.kotlinx:kotlinx-coroutines-android:xxxx 这个库你们也可以使用gradle进行动态修改的
+                //目前这个libary用到了这三个kotlin库：
+                // implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.10"
+                // implementation "org.jetbrains.kotlin:kotlin-reflect:1.3.10"
+                // implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.0.1'
+            }
+        }
+    }
+
+```
 #### 1.project root的src下面的build.gradle中配置plugin
 
 ```
