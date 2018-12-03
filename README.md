@@ -3,7 +3,8 @@
 
 我们先介绍如何集成进我们的项目中，然后再介绍如何使用
 ------
-首先我们需要把version.gradle(公共版本配置)粘贴在project的根目录
+首先我们需要把[version.gradle](https://raw.githubusercontent.com/TheMelody/kotlin_plugin_aop/master/version.gradle)
+(公共版本配置)粘贴在project的根目录
 
 #### 1.project root的src下面的build.gradle中配置plugin
 
