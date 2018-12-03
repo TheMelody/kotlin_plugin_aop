@@ -1,0 +1,27 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+ext {
+    //Android
+    android = [
+            buildToolsVersion: '28.0.3',
+            compileSdkVersion: 28,
+            minSdkVersion    : 16,
+            targetSdkVersion : 28,
+            versionCode      : 100,
+            versionName      : 'v1.0.0'
+    ]
+    //implementation远程仓库的公共版本号
+    depsVersion = [
+            support: '28.0.0',
+            kotlin : '1.3.10',
+            aspectjrt:'1.8.13'
+    ]
+    //implementation依赖的远程仓库
+    deps = [
+            supportV7: "com.android.support:appcompat-v7:${depsVersion.support}",
+            kotlinx_coroutines_android:"org.jetbrains.kotlinx:kotlinx-coroutines-android:1.0.1",
+            kotlin_stdlib:"org.jetbrains.kotlin:kotlin-stdlib-jdk8:${depsVersion.kotlin}",
+            kotlin_reflect:"org.jetbrains.kotlin:kotlin-reflect:${depsVersion.kotlin}",
+            aspectjrt:"org.aspectj:aspectjrt:${depsVersion.aspectjrt}"
+    ]
+}

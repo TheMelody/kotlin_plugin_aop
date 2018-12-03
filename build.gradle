@@ -11,12 +11,12 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'android-aspectjx'
 
 android {
-    compileSdkVersion 28
-    buildToolsVersion '28.0.3'
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
 
     defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 28
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
     }
 
     buildTypes {
@@ -37,19 +37,19 @@ publish{
     userOrg = 'themelody'
     groupId = 'aop.kotlinx.plugin'
     artifactId = 'kotlin_plugin_aop'
-    publishVersion = '1.0.0'
+    publishVersion = '1.0.2'
     desc = "kotlin_plugin_aop"
     website = 'https://github.com/TheMelody/kotlin_plugin_aop'
 }
 
 //在Terminal终端命令输入如下
-//./gradlew clean build bintrayUpload -PbintrayUser=[userOrg] -PbintrayKey=[你的ApiKey] -PdryRun=false
+//./gradlew clean build bintrayUpload -PbintrayUser=[userOrg] -PbintrayKey=[你的apiKey] -PdryRun=false
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:appcompat-v7:28.0.0'
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.10"
-    implementation "org.jetbrains.kotlin:kotlin-reflect:1.3.10"
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.0.1'
+    implementation deps.supportV7
+    implementation deps.kotlin_stdlib
+    implementation deps.kotlin_reflect
+    implementation deps.kotlinx_coroutines_android
     implementation "com.github.czy1121:settingscompat:1.1.4"
-    implementation 'org.aspectj:aspectjrt:1.8.13'
+    implementation deps.aspectjrt
 }
