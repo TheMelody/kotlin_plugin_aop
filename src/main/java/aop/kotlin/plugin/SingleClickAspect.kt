@@ -6,6 +6,7 @@ import org.aspectj.lang.ProceedingJoinPoint
 import org.aspectj.lang.annotation.Around
 import org.aspectj.lang.annotation.Aspect
 import org.aspectj.lang.annotation.Pointcut
+import org.aspectj.lang.reflect.MethodSignature
 import java.util.*
 
 @Aspect
@@ -25,11 +26,14 @@ internal class SingleClickAspect {
     @Around("methodAnnotated()")
     @Throws(Throwable::class)
     fun aroundJoinPoint(joinPoint: ProceedingJoinPoint){
+       val methodSignature: MethodSignature = joinPoint.signature as MethodSignature
+       //默认值是600毫秒
+       val timeValue: SingleClick = methodSignature.method.getAnnotation(SingleClick::class.java)
        //获取系统当前时间
        val currentTime = Calendar.getInstance().timeInMillis
        //当前时间-上次记录时间>过滤的时间 过滤掉600毫秒内的连续点击
        //表示该方法可以执行
-       if (currentTime - lastClickTime > MIN_CLICK_DELAY_TIME) {
+       if (currentTime - lastClickTime > timeValue.timeInterval) {
            if(BuildConfig.DEBUG_LOG){
                Log.e(TAG, "currentTime:$currentTime")
            }
@@ -43,7 +47,6 @@ internal class SingleClickAspect {
 
     companion object {
         const val TAG ="SingleClickAspect"
-        const val MIN_CLICK_DELAY_TIME = 600
         var lastClickTime = 0L
     }
 }
