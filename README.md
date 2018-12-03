@@ -3,27 +3,15 @@
 
 我们先介绍如何集成进我们的项目中，然后再介绍如何使用
 ------
-如果我的插件库的kotlin版本库过低，你们可以使用gradle代码进行修改版本
-```
-configurations.all {
-        resolutionStrategy.eachDependency { DependencyResolveDetails details ->
-              def requested = details.requested
-              if(requested.group == "org.jetbrains.kotlin"){
-                  details.useVersion "xxx.xxx.xxx最新版本号"
-              }
-               //org.jetbrains.kotlinx:kotlinx-coroutines-android:xxxx 
-               //这个库你们也可以自己看情况使用gradle进行动态修改的
-              //目前这个libary用到了这三个kotlin库：
-              //implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.10"
-              //implementation "org.jetbrains.kotlin:kotlin-reflect:1.3.10"
-             //implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.0.1'
-        }
-    }
+首先我们需要把version.gradle(公共版本配置)粘贴在project的根目录
 
-```
 #### 1.project root的src下面的build.gradle中配置plugin
 
 ```
+我们在root的build.gradle文件内容的最上层增加
+apply from: 'version.gradle'
+
+然后在buildscript内部增加下面的内容:
  repositories {
         maven {
             url "https://jitpack.io"
@@ -35,6 +23,7 @@ configurations.all {
     classpath 'com.hujiang.aspectjx:gradle-android-plugin-aspectjx:2.0.4'
  }
 ```
+#### 增加了version.gradle之后你们如果想要修改kotlin和aspectj的版本都可以在version.gradle中修改了
 
 #### 2.app下面的build.gradle中配置plugin
 ```
