@@ -63,7 +63,7 @@ android {
 
 #### 3.build.gradle依赖远程libary
 ```
-implementation 'aop.kotlinx.plugin:kotlin_plugin_aop:1.0.0'
+implementation 'aop.kotlinx.plugin:kotlin_plugin_aop:1.0.1'
 ```
 ## :see_no_evil:前方高能，接下来我们就可以使用我们的aop插件了
 目前我们提供四个功能：
@@ -76,8 +76,16 @@ implementation 'aop.kotlinx.plugin:kotlin_plugin_aop:1.0.0'
 
 ### 防止控件重复点击
 ------
+##### 第一种默认时间间隔600毫秒
 ```
 @SingleClick
+fun testSingleClick(){
+   Log.d(TAG,"testSingleClick()")
+}
+```
+##### 第二种自定义时间间隔，毫秒值
+```
+@SingleClick(timeInterval = 1000)
 fun testSingleClick(){
    Log.d(TAG,"testSingleClick()")
 }
