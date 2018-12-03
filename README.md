@@ -52,7 +52,7 @@ android {
 
 #### 3.build.gradle依赖远程libary
 ```
-implementation 'aop.kotlinx.plugin:kotlin_plugin_aop:1.0.1'
+implementation 'aop.kotlinx.plugin:kotlin_plugin_aop:1.0.2'
 ```
 ## :see_no_evil:前方高能，接下来我们就可以使用我们的aop插件了
 目前我们提供四个功能：
