@@ -128,6 +128,12 @@ annotation class OnRequestPermissionsResult(val useDefaultDeniedDialog:Boolean =
             }
         }
     }
+    
+对于上面的onRequestPermissionsResult()方法里面的, permissions.classCast<T>()的方法使用如下:
+
+//防止类型擦除,reified具体化一个T的类型参数
+inline fun <reified T> Any.classCast() : T? = this as? T?
+    
 ```
 
 ### 悬浮窗权限申请
