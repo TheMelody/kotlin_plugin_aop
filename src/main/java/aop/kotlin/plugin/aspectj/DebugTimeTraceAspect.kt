@@ -1,6 +1,7 @@
-package aop.kotlin.plugin
+package aop.kotlin.plugin.aspectj
 
 import android.util.Log
+import aop.kotlin.plugin.annotation.DebugTimeTrace
 import aop.kotlinx.plugin.BuildConfig
 import org.aspectj.lang.ProceedingJoinPoint
 import org.aspectj.lang.annotation.Around
@@ -15,7 +16,7 @@ internal class DebugTimeTraceAspect {
         const val TAG = "TimeTrace"
     }
 
-    @Pointcut("execution(@aop.kotlin.plugin.DebugTimeTrace * *(..))")
+    @Pointcut("execution(@aop.kotlin.plugin.annotation.DebugTimeTrace * *(..))")
     fun timeTraceMethod() {
     }
 

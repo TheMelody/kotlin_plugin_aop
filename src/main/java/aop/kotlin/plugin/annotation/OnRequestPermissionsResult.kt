@@ -1,4 +1,4 @@
-package aop.kotlin.plugin
+package aop.kotlin.plugin.annotation
 
 @Retention(AnnotationRetention.RUNTIME)
 @Target(AnnotationTarget.FUNCTION)

@@ -1,15 +1,16 @@
-package aop.kotlin.plugin
+package aop.kotlin.plugin.aspectj
 
 import android.content.Context
+import aop.kotlin.plugin.utils.PermissionUtils
 import org.aspectj.lang.ProceedingJoinPoint
 import org.aspectj.lang.annotation.Around
 import org.aspectj.lang.annotation.Aspect
 import org.aspectj.lang.annotation.Pointcut
 
 @Aspect
-class DrawOverLayPermissionAspect {
+internal class DrawOverLayPermissionAspect {
 
-    @Pointcut("execution(@aop.kotlin.plugin.CheckDrawOverLaysPermission * *(..))")
+    @Pointcut("execution(@aop.kotlin.plugin.annotation.CheckDrawOverLaysPermission * *(..))")
     fun checkDrawOverLaysPermissionMethod() {
     }
 

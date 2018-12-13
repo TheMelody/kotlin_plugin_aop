@@ -1,6 +1,7 @@
-package aop.kotlin.plugin
+package aop.kotlin.plugin.aspectj
 
 import android.util.Log
+import aop.kotlin.plugin.annotation.SingleClick
 import aop.kotlinx.plugin.BuildConfig
 import org.aspectj.lang.ProceedingJoinPoint
 import org.aspectj.lang.annotation.Around
@@ -12,7 +13,7 @@ import java.util.*
 @Aspect
 internal class SingleClickAspect {
 
-    @Pointcut("execution(@aop.kotlin.plugin.SingleClick * *(..))")
+    @Pointcut("execution(@aop.kotlin.plugin.annotation.SingleClick * *(..))")
     fun methodAnnotated() {
 
     }

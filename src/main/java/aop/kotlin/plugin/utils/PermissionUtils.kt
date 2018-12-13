@@ -1,4 +1,4 @@
-package aop.kotlin.plugin
+package aop.kotlin.plugin.utils
 
 import android.app.Activity
 import android.content.Context
@@ -125,5 +125,4 @@ object PermissionUtils {
     fun openDrawOverlaysActivity(context: Context){
         SettingsCompat.manageDrawOverlays(context)
     }
-
 }

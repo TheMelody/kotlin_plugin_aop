@@ -1,9 +1,12 @@
-package aop.kotlin.plugin
+package aop.kotlin.plugin.aspectj
 
 import android.app.Activity
 import android.content.Context
 import android.support.v4.app.Fragment
 import android.support.v7.app.AlertDialog
+import aop.kotlin.plugin.utils.PermissionUtils
+import aop.kotlin.plugin.annotation.CheckPermission
+import aop.kotlin.plugin.annotation.OnRequestPermissionsResult
 import aop.kotlinx.plugin.R
 import org.aspectj.lang.JoinPoint
 import org.aspectj.lang.annotation.Aspect
@@ -14,15 +17,15 @@ import org.aspectj.lang.annotation.Before
 import org.aspectj.lang.reflect.MethodSignature
 
 @Aspect
-open class CheckPermissionAspect {
+internal class CheckPermissionAspect {
 
     private var mPermissionJoinPoint: ProceedingJoinPoint? = null
 
-    @Pointcut("execution(@aop.kotlin.plugin.CheckPermission * *(..))")
+    @Pointcut("execution(@aop.kotlin.plugin.annotation.CheckPermission * *(..))")
     fun checkPermissionMethod() {
     }
 
-    @Pointcut("execution(@aop.kotlin.plugin.OnRequestPermissionsResult * *(..))")
+    @Pointcut("execution(@aop.kotlin.plugin.annotation.OnRequestPermissionsResult * *(..))")
     fun requestPermissionsResult() {
     }
 
