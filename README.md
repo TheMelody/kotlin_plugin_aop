@@ -1,6 +1,10 @@
 # Kotlin版本的Aspectj切面玩法 :see_no_evil: 
 <img src="https://raw.githubusercontent.com/TheMelody/3DEmoji/master/mogutou_test.gif" width="66.66"/>[我的知乎](https://www.zhihu.com/people/qiang-fu-5-67/activities)  [![我的知乎](https://github.com/TheMelody/3DEmoji/blob/master/html-element.svg)](https://www.zhihu.com/people/qiang-fu-5-67/activities)
 
+
+#### 版本 1.0.3 新增功能：
+>[登录拦截](#登录拦截)
+
 我们先介绍如何集成进我们的项目中，然后再介绍如何使用
 ------
 首先我们需要把[version.gradle](https://raw.githubusercontent.com/TheMelody/kotlin_plugin_aop/master/version.gradle)
@@ -52,7 +56,7 @@ android {
 
 #### 3.build.gradle依赖远程libary
 ```
-implementation 'aop.kotlinx.plugin:kotlin_plugin_aop:1.0.2'
+implementation 'aop.kotlinx.plugin:kotlin_plugin_aop:1.0.3'
 ```
 ## :see_no_evil:前方高能，接下来我们就可以使用我们的aop插件了
 目前我们提供四个功能：
@@ -61,6 +65,7 @@ implementation 'aop.kotlinx.plugin:kotlin_plugin_aop:1.0.2'
 * [2.开发模式下,打印方法耗时](#开发模式下-打印方法耗时)
 * [3.运行时权限申请](#运行时权限申请)
 * [4.悬浮窗权限申请](#悬浮窗权限申请)
+* [5.登录拦截](#登录拦截)
 
 
 ### 防止控件重复点击
@@ -151,6 +156,44 @@ aop.kotlin.plugin.PermissionUtils#canDrawOverlays
 
 跳转到悬浮窗授权界面
 aop.kotlin.plugin.PermissionUtils#openDrawOverlaysActivity
+```
+
+### 登录拦截
+------
+我们在Application的onCreate中初始化拦截器
+```
+override fun onCreate() {
+        super.onCreate()
+        LoginHandlerInterceptor.instance.init(object : ILoginListener {
+            override fun onInterceptor(interceptorType: Int): Boolean {//类型自己定义
+                if(interceptorType==0){
+                    //跳转到登录界面,弹dialog，自己随意
+                    return true
+                }else if(interceptorType==1){
+                    Log.d(TAG,"不拦截,方法执行不受影响,打开其他界面,可以弹Toast")
+                    return false
+                }else if(interceptorType==2){
+                    
+                }else if(更多自己定义的类型){
+                 
+                }
+                return true
+            }
+            override fun isLogin(): Boolean {
+                return false //自己项目根据自己项目情况判断当前是否是登录状态
+            }
+        })
+    }
+```
+onInterceptor方法如果返回true，注解的方法不会继续执行，如果返回false，方法继续执行不受影响。
+
+#### 注解的用法如下：
+```
+@LoginInterceptor(interceptorType = 0)
+fun testMethod(){
+ //执行其他业务逻辑
+ //interceptorType定义的类型，我们在Application中要对你定义的类型做拦截
+}
 ```
 
 ## :clap: 用法全部介绍完，有新的想法可以提出来
