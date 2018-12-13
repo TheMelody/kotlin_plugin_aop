@@ -37,7 +37,7 @@ publish{
     userOrg = 'themelody'
     groupId = 'aop.kotlinx.plugin'
     artifactId = 'kotlin_plugin_aop'
-    publishVersion = '1.0.2'
+    publishVersion = '1.0.3'
     desc = "kotlin_plugin_aop"
     website = 'https://github.com/TheMelody/kotlin_plugin_aop'
 }
