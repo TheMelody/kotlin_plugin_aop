@@ -1,7 +1,6 @@
 # Kotlin版本的Aspectj切面玩法 :see_no_evil: 
 <img src="https://raw.githubusercontent.com/TheMelody/3DEmoji/master/mogutou_test.gif" width="66.66"/>[我的知乎](https://www.zhihu.com/people/qiang-fu-5-67/activities)  [![我的知乎](https://github.com/TheMelody/3DEmoji/blob/master/html-element.svg)](https://www.zhihu.com/people/qiang-fu-5-67/activities)
 
-
 #### 版本 1.0.4 修改点：
 >androidX库替换,支持androidX
 
@@ -198,6 +197,60 @@ fun testMethod(){
 
 ## :clap: 用法全部介绍完，有新的想法可以提出来
 
+# 写在最后,混淆配置
+
+```
+-keep class * extends java.lang.annotation.Annotation { *; }
+-keep interface * extends java.lang.annotation.Annotation { *; }
+
+
+-keep @aop.kotlin.plugin.annotation.CheckPermission class * {*;}
+-keep class * {
+    @aop.kotlin.plugin.annotation.CheckPermission <fields>;
+}
+-keepclassmembers class * {
+    @aop.kotlin.plugin.annotation.CheckPermission <methods>;
+}
+
+-keep @aop.kotlin.plugin.annotation.OnRequestPermissionsResult class * {*;}
+-keep class * {
+    @aop.kotlin.plugin.annotation.OnRequestPermissionsResult <fields>;
+}
+-keepclassmembers class * {
+    @aop.kotlin.plugin.annotation.OnRequestPermissionsResult <methods>;
+}
+
+-keep @aop.kotlin.plugin.annotation.SingleClick class * {*;}
+-keep class * {
+    @aop.kotlin.plugin.annotation.SingleClick <fields>;
+}
+-keepclassmembers class * {
+    @aop.kotlin.plugin.annotation.SingleClick <methods>;
+}
+
+-keep @aop.kotlin.plugin.annotation.LoginInterceptor class * {*;}
+-keep class * {
+    @aop.kotlin.plugin.annotation.LoginInterceptor <fields>;
+}
+-keepclassmembers class * {
+    @aop.kotlin.plugin.annotation.LoginInterceptor <methods>;
+}
+-keep @aop.kotlin.plugin.annotation.DebugTimeTrace class * {*;}
+-keep class * {
+    @aop.kotlin.plugin.annotation.DebugTimeTrace <fields>;
+}
+-keepclassmembers class * {
+    @aop.kotlin.plugin.annotation.DebugTimeTrace <methods>;
+}
+-keep @aop.kotlin.plugin.annotation.CheckDrawOverLaysPermission class * {*;}
+-keep class * {
+    @aop.kotlin.plugin.annotation.CheckDrawOverLaysPermission <fields>;
+}
+-keepclassmembers class * {
+    @aop.kotlin.plugin.annotation.CheckDrawOverLaysPermission <methods>;
+}
+
+```
 
 
 
