@@ -1,8 +1,6 @@
 # Kotlin版本的Aspectj切面玩法 :see_no_evil: 
 <img src="https://raw.githubusercontent.com/TheMelody/3DEmoji/master/mogutou_test.gif" width="66.66"/>[我的知乎](https://www.zhihu.com/people/qiang-fu-5-67/activities)  [![我的知乎](https://github.com/TheMelody/3DEmoji/blob/master/html-element.svg)](https://www.zhihu.com/people/qiang-fu-5-67/activities)
 
-#### 版本 1.0.4 修改点：
->androidX库替换,支持androidX
 
 我们先介绍如何集成进我们的项目中，然后再介绍如何使用
 ------
@@ -55,7 +53,7 @@ android {
 
 #### 3.build.gradle依赖远程libary
 ```
-implementation 'aop.kotlinx.plugin:kotlin_plugin_aop:1.0.4'
+implementation 'aop.kotlinx.plugin:kotlin_plugin_aop:1.0.6'
 ```
 ## :see_no_evil:前方高能，接下来我们就可以使用我们的aop插件了
 目前我们提供四个功能：
